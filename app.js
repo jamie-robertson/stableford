@@ -7,12 +7,16 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var session = require('express-session');
+var http = require('http');
+var mongoose = require('mongoose');
 
-
-var config = require('./config.js');
-var helpers = require('./helpers');
+//var config = require('./config.js');
+//var helpers = require('./helpers');
 
 var app = express();
+
+var mongoose = require('mongoose');
+
 
 //===============EXPRESS================
 //http request logger
@@ -66,6 +70,10 @@ app.use(require('./routes'));
 
 //Get static assets
 app.use(express.static(__dirname + '/public'));
+
+
+
+//=============DATABASE=================
 
 
 //Start
