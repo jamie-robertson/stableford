@@ -5,25 +5,33 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local');
+var session = require('express-session');
+
 
 var config = require('./config.js');
 var helpers = require('./helpers');
 
 var app = express();
 
-//===============PASSPORT===============
-
-
 //===============EXPRESS================
+//http request logger
 app.use(logger('combined'));
+
+//Parse Cookie header and populate req.cookies with an object keyed by the cookie name
 app.use(cookieParser());
+
+//Node.js body parsing middleware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 app.use(methodOverride('X-HTTP-Method-Override'));
-app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
+
+//Simple session middleware for Express
+app.use(session({secret: 'hearts', saveUninitialized: true, resave: true}));
+
+//Passport is Express-compatible authentication middleware for Node.js.
 app.use(passport.initialize());
 app.use(passport.session());
 
