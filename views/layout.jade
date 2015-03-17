@@ -2,8 +2,25 @@ doctype html
 html
     head
         title= title
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
     body
-        block content
+        header
+            nav.navbar.navbar-default
+                div.navbar-header
+                    a.navbar-brand Stableford
+                ul.nav.navbar-nav.pull-right
+                    li
+                        a(href='/') Home
+                    li
+                        a(href='/courses') Courses
+                    li
+                        a(href='/players') Players
+
+
+
+        div.container
+            block content
         script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
         script(src='/javascripts/global.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')

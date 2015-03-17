@@ -1,0 +1,71 @@
+extends layout
+
+block content
+
+    // Wrapper
+    #wrapper
+        h1 Players
+        div.row
+            aside.col-sm-4
+                // USER INFO
+                #userInfo.panel.panel-default
+                    div.panel-heading User Info
+                    div.panel-body
+                        p
+                            strong First name:
+                            |  <span id='userInfoFirstName'></span>
+                            br
+                            strong Last name:
+                            |  <span id='userInfoLastName'></span>
+                            br
+                            strong National Handicap:
+                            |  <span id='userInfoHandicap'></span>
+
+            // /USER INFO
+            main.col-sm-8
+                // USER LIST
+                h2 User List
+                #userList
+                    table.table.table-striped.table-hover.table-bordered
+                        thead
+                            th UserName
+                            th NationalHandicap
+                            th Email
+                            th Update
+                            th Delete?
+                        tbody
+                // /USER LIST
+
+                // ADD USER
+
+                a.btn.add-user(href='#userControls', data-toggle='collapse', data-target='#userControls') Add/Update user
+                div#userControls.collapse.panel.panel-default
+                    div.panel-heading User details
+                    #addUser(data-userid="").form-horizontal.panel-body
+                        fieldset
+                            div.form-group
+                                label.control-label.col-sm-2 Username
+                                div.col-sm-10
+                                    input#inputUserName(type='text', placeholder='Username').form-control
+                            div.form-group
+                                label.control-label.col-sm-2 Firstname
+                                div.col-sm-10
+                                    input#inputUserFirstName(type='text', placeholder='First Name').form-control
+                            div.form-group
+                                label.control-label.col-sm-2 Lastname
+                                div.col-sm-10
+                                    input#inputUserLastName(type='text', placeholder='Last Name').form-control
+                            div.form-group
+                                label.control-label.col-sm-2 Handicap
+                                div.col-sm-10
+                                    input#inputUserHandicap(type='text', placeholder='National Handicap').form-control
+                            div.form-group
+                                label.control-label.col-sm-2 Email
+                                div.col-sm-10
+                                    input#inputUserEmail(type='text', placeholder='Email').form-control
+                            div.form-group
+                                div.col-sm-12
+                                    button#btnAddUser.btn.pull-right Save
+                // /ADD USER
+
+    // /WRAPPER

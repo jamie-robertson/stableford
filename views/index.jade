@@ -1,53 +1,23 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to our test
 
     // Wrapper
     #wrapper
+        aside.col-sm-4
 
-        // USER INFO
-        #userInfo
-            h2 User Info
-            p
-                strong First name:
-                |  <span id='userInfoFirstName'></span>
-                br
-                strong Last name:
-                |  <span id='userInfoLastName'></span>
-                br
-                strong National Handicap:
-                |  <span id='userInfoHandicap'></span>
-
-        // /USER INFO
-
-        // USER LIST
-        h2 User List
-        #userList
-            table
-                thead
-                    th UserName
-                    th NationalHandicap
-                    th Email
-                    th Update
-                    th Delete?
-                tbody
-        // /USER LIST
-
-        // ADD USER
-        h2 Add / Update User
-        #addUser(data-userid="")
-            fieldset
-                input#inputUserName(type='text', placeholder='Username')
-                input#inputUserEmail(type='text', placeholder='Email')
-                br
-                input#inputUserFirstName(type='text', placeholder='First Name')
-                input#inputUserLastName(type='text', placeholder='Last Name')
-                br
-                input#inputUserHandicap(type='text', placeholder='National Handicap')
-                br
-                button#btnAddUser Save
-        // /ADD USER
+        main.col-sm-12
+            // USER LIST
+            h2 User List
+            #userList
+                table.table.table-striped.table-hover.table-bordered
+                    thead
+                        th UserName
+                        th NationalHandicap
+                        th Email
+                        th Update
+                        th Delete?
+                    tbody
+            // /USER LIST
 
     // /WRAPPER
