@@ -107,6 +107,7 @@ function saveUser(event) {
             if (response.msg === '') {
 
                 // Clear the form inputs
+                $('#addUser').removeAttr('userid');
                 $('#addUser fieldset input').val('');
 
                 // Update the table
