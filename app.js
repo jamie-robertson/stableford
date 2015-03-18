@@ -1,3 +1,4 @@
+//Load NPM Modules
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,28 +7,30 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // Database
-var mongo = require('mongoskin');
-//var db = mongo.db("mongodb://localhost:27017/userdetails", {native_parser:true});
-
 var mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/playerdetails");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) { console.log('connected!'); });
 
+
+//Routes - @TODO move out of app.js
 var routes = require('./routes/index');
 var players = require('./routes/players');
 var courses = require('./routes/courses');
 var models = require('./models/index');
 
+//Init Express
 var app = express();
 
-// view engine setup
+// Express view engine setup - @TODO Swap out for handlebars/Mustache
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+
+//Setup logging
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +44,7 @@ app.use(function(req,res,next){
     next();
 });
 
+//Declare routes to use
 app.use('/', routes);
 app.use('/players', players);
 app.use('/courses', courses);
@@ -53,7 +57,6 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -75,6 +78,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
