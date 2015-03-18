@@ -8,6 +8,7 @@ var playerSchema = Schema({
     username: String,
     email: String,
     nationalHandicap: Number,
+    hand: String,
     scores: [{
         type: Schema.Types.ObjectId,
         ref: 'Score'

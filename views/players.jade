@@ -9,18 +9,28 @@ block content
             aside.col-sm-4
                 // USER INFO
                 #userInfo.panel.panel-default
-                    div.panel-heading User Info
+                    div.panel-heading User details
                     div.panel-body
-                        p
-                            strong First name:
-                            |  <span id='userInfoFirstName'></span>
-                            br
-                            strong Last name:
-                            |  <span id='userInfoLastName'></span>
-                            br
-                            strong National Handicap:
-                            |  <span id='userInfoHandicap'></span>
-
+                        h3 Personal details
+                        ul.list-group
+                            li.list-group-item
+                                strong First name: <span id='userInfoFirstName'></span>
+                            li.list-group-item
+                                strong Last name: <span id='userInfoLastName'></span>
+                            li.list-group-item
+                                strong National Handicap: <span id='userInfoHandicap'></span>
+                            li.list-group-item
+                                strong Hand: <span id='userInfoHand'></span>
+                            li.list-group-item
+                                strong Email: <span id='userInfoEmail'></span>
+                        h3 Previous Round
+                        ul.list-group
+                            li.list-group-item
+                                strong Course name: <span id='userInfoFirstName'></span>
+                            li.list-group-item
+                                strong Net Score: <span id='userInfoFirstName'></span>
+                            li.list-group-item
+                                strong Calulated Score: <span id='userInfoFirstName'></span>
             // /USER INFO
             main.col-sm-8
                 // USER LIST
@@ -28,8 +38,8 @@ block content
                 #userList
                     table.table.table-striped.table-hover.table-bordered
                         thead
-                            th UserName
-                            th NationalHandicap
+                            th Name
+                            th National Handicap
                             th Email
                             th Update
                             th Delete?
@@ -59,6 +69,10 @@ block content
                                 label.control-label.col-sm-2 Handicap
                                 div.col-sm-10
                                     input#inputUserHandicap(type='text', placeholder='National Handicap').form-control
+                            div.form-group
+                                label.control-label.col-sm-2 Hand
+                                div.col-sm-10
+                                    input#inputUserHand(type='text', placeholder='left/right handed').form-control
                             div.form-group
                                 label.control-label.col-sm-2 Email
                                 div.col-sm-10
