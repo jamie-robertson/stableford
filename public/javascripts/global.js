@@ -1,21 +1,6 @@
 // Userlist data array for filling in info box
 var userListData = [];
 
-// DOM Ready =============================================================
-$(document).ready(function() {
-
-    // Populate the user table on initial page load
-    populateTable();
-
-    $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
-    $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteUser);
-    $('#userList table tbody').on('click', 'td a.linkupdateuser', updateUser);
-
-         // Add User button click
-    $('#btnAddUser').on('click', saveUser);
-
-});
-
 // Functions =============================================================
 
 // Fill table with data
@@ -192,3 +177,18 @@ function updateUser(event) {
     $('#addUser fieldset input#inputUserHandicap').val(results[0].nationalHandicap);
 
 };
+
+// DOM Ready =============================================================
+$(document).ready(function() {
+
+    // Populate the user table on initial page load
+    populateTable();
+
+    $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
+    $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteUser);
+    $('#userList table tbody').on('click', 'td a.linkupdateuser', updateUser);
+
+    // Add User button click
+    $('#btnAddUser').on('click', saveUser);
+
+});
