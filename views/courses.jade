@@ -5,22 +5,22 @@ block content
         aside.col-sm-4
             h2 Course details
             div.course-info.panel.panel-default
-                div.panel-heading Course details
                 div.panel-body
+                    h3 Course details
                     ul.list-group
                         li.list-group-item
                             strong Course name: <span id='courseInfoName'></span>
                         li.list-group-item
                             strong Course difficulty: <span id='courseInfoDifficulty'></span>
-            div.course-location.panel.panel-default
-                div.panel-heading Course Location
-                div.panel-body
+                    h3 Course Location
                     address
-                        p 123 Course street
-                        p Course area
-                        p Course country
-                        span.Tel Tel:
-                            a(href='tel:123 456 786') 123 456 789
+                        ul.list-group
+                            li.list-group-item 123 Course street
+                            li.list-group-item Course area
+                            li.list-group-item Course country
+                            li.list-group-item
+                                span.Tel Tel:
+                                    a(href='tel:123 456 786') 123 456 789
         main.col-sm-8
             // USER LIST
             h2 Courses

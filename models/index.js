@@ -22,7 +22,14 @@ var scoreSchema = Schema({
 //Course Schema
 var courseSchema = mongoose.Schema({
     courseName: String,
-    courseLocation: String
+    courseDifficulty: String,
+    courseLocation: {
+        address1: String,
+        address2: String,
+        county: String,
+        telephone: Number,
+        email: String
+    }
 });
 
 //hole Schema
