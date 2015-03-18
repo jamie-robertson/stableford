@@ -16,7 +16,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) { console.log('connected!'); });
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var players = require('./routes/players');
+var courses = require('./routes/courses');
 var models = require('./models/index');
 
 var app = express();
@@ -41,7 +42,8 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/players', players);
+app.use('/courses', courses);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

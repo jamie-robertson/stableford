@@ -1,16 +1,17 @@
 // Userlist data array for filling in info box
 var userListData = [];
+var courseListData = [];
 
 // Functions =============================================================
 
-// Fill table with data
-function populateTable() {
+// Fill users table with data
+function populatePlayers() {
 
     // Empty content string
     var tableContent = '';
 
     // jQuery AJAX call for JSON
-    $.getJSON( '/users/userlist', function( data ) {
+    $.getJSON( '/players/playerlist', function( data ) {
 
         // For each item in our JSON, add a table row and cells to the content string
         $.each(data, function(){
@@ -28,6 +29,26 @@ function populateTable() {
 
         // Inject the whole content string into our existing HTML table
         $('#userList table tbody').html(tableContent);
+    });
+
+};
+
+//Fll courses table with data
+function populateCourses() {
+    var tableContent = '';
+
+    $.getJSON('/courses/courselist', function( data ) {
+
+        courseListData = data;
+
+        tableContent += '<tr>';
+        tableContent += '<td><a href="#" class="linkshowcourse" rel="' + this.coursename + '">' + this.coursename + '</a></td>';
+        tableContent += '<td></td>';
+        tableContent += '<td></td>';
+        tableContent += '<td><a href="#" class="linkupdateuser" rel="' + this._id + '">Update</a></td>';
+        tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this._id + '">delete</a></td>';
+        tableContent += '</tr>';
+
     });
 
 };
@@ -55,7 +76,7 @@ function showUserInfo(event) {
 
 
 // Add User
-function saveUser(event) {
+function savePlayer(event) {
     event.preventDefault();
 
     // Super basic validation - increase errorCount variable if any fields are blank
@@ -78,7 +99,7 @@ function saveUser(event) {
 
         var userTask = false;
 
-        $('#addUser').attr('userid') !== undefined ? userTask = '/users/updateuser/' + $('#addUser').attr('userid') : userTask = '/users/saveuser';
+        $('#addUser').attr('userid') !== undefined ? userTask = '/players/updateplayer/' + $('#addUser').attr('userid') : userTask = '/players/saveplayer';
 
         // Use AJAX to post the object to our adduser service
         $.ajax({
@@ -96,7 +117,7 @@ function saveUser(event) {
                 $('#addUser fieldset input').val('');
 
                 // Update the table
-                populateTable();
+                populatePlayers();
 
             }
             else {
@@ -139,7 +160,7 @@ function deleteUser(event) {
             }
 
             // Update the table
-            populateTable();
+            populatePlayers();
 
         });
 
@@ -182,13 +203,14 @@ function updateUser(event) {
 $(document).ready(function() {
 
     // Populate the user table on initial page load
-    populateTable();
+    populatePlayers();
+    populateCourses();
 
     $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
     $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteUser);
     $('#userList table tbody').on('click', 'td a.linkupdateuser', updateUser);
 
     // Add User button click
-    $('#btnAddUser').on('click', saveUser);
+    $('#btnAddUser').on('click', savePlayer);
 
 });
