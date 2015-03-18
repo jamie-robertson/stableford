@@ -22,7 +22,7 @@ block content
                                 span.Tel Tel:
                                     a(href='tel:123 456 786') 123 456 789
         main.col-sm-8
-            // USER LIST
+            // COURSE LIST
             h2 Courses
             #userList
                 table.table.table-striped.table-hover.table-bordered
@@ -33,5 +33,47 @@ block content
                         th Update
                         th Delete?
                     tbody
-            // /USER LIST
+            // COURSE LIST
+
+            //ADD COURSE
+
+            a.btn.btn-default.add-user(href='#userControls', data-toggle='collapse', data-target='#userControls') Add/Update Course
+            hr
+            div#userControls.collapse.panel.panel-default
+                div.panel-heading User details
+                #addUser(data-userid="").form-horizontal.panel-body
+                    fieldset
+                        div.form-group
+                            label.control-label.col-sm-3 Course name
+                            div.col-sm-9
+                                input#inputCourseName(type='text', placeholder='Course name').form-control
+                        div.form-group
+                            label.control-label.col-sm-3 Course difficulty
+                            div.col-sm-9
+                                input#inputCourseDifficulty(type='text', placeholder='Course difficulty').form-control
+                        div.form-group
+                            label.control-label.col-sm-3 Course Address 1
+                            div.col-sm-9
+                                input#inputCourseAddressOne(type='text', placeholder='Gate number etc').form-control
+                        div.form-group
+                            label.control-label.col-sm-3 Course Address 2
+                            div.col-sm-9
+                                input#inputCourseAdressTwo(type='text', placeholder='Street name etc').form-control
+                        div.form-group
+                            label.control-label.col-sm-3 Course county
+                            div.col-sm-9
+                                input#inputCourseCounty(type='text', placeholder='Course county').form-control
+                        div.form-group
+                            label.control-label.col-sm-3 Telephone
+                            div.col-sm-9
+                                input#inputCourseTelephone(type='number', placeholder='Telephone number').form-control
+                        div.form-group
+                            label.control-label.col-sm-3 Email
+                            div.col-sm-9
+                                input#inputCourseEmail(type='email', placeholder='Email').form-control
+                        div.form-group
+                            div.col-sm-12
+                                button#btnAddUser.btn.pull-right Save
+            //ADD COURSE
+
     // /WRAPPER
