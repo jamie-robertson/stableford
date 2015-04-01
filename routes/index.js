@@ -19,5 +19,4 @@ router.get('/courses', function(req, res, next) {
 });
 
 
-
 module.exports = router;

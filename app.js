@@ -1,3 +1,4 @@
+//Load NPM Modules
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var path = require('path');
@@ -14,13 +15,18 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () { console.log('connected!'); });
 
+
+//Routes - @TODO move out of app.js
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var players = require('./routes/players');
+var courses = require('./routes/courses');
 var models = require('./models/index');
 
+//Init Express
 var app = express();
 
 // Express view engine setup - @TODO Swap out for handlebars/Mustache
+
 //app.set('views-jade-handlebars', path.join(__dirname, 'views-jade-handlebars'));
 //app.set('view engine', 'jade');
 
@@ -28,9 +34,14 @@ var app = express();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+//
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+
+//Setup logging
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,8 +55,10 @@ app.use(function(req,res,next){
     next();
 });
 
+//Declare routes to use
 app.use('/', routes);
-app.use('/users', users);
+app.use('/players', players);
+app.use('/courses', courses);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,7 +68,6 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -77,6 +89,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
