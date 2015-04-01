@@ -1,4 +1,5 @@
 var express = require('express');
+var exphbs  = require('express-handlebars');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,14 +7,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // Database
-var mongo = require('mongoskin');
-//var db = mongo.db("mongodb://localhost:27017/userdetails", {native_parser:true});
-
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/playerdetails");
+mongoose.connect("mongodb://localhost/playerdetails");
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) { console.log('connected!'); });
+db.once('open', function () { console.log('connected!'); });
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -21,9 +20,14 @@ var models = require('./models/index');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// Express view engine setup - @TODO Swap out for handlebars/Mustache
+//app.set('views-jade-handlebars', path.join(__dirname, 'views-jade-handlebars'));
+//app.set('view engine', 'jade');
+
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));

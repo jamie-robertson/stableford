@@ -14,5 +14,10 @@ router.get('/scorecard', function(req, res, next) {
     res.render('scores', { title: 'Scores' });
 });
 
+router.get('/courses', function(req, res, next) {
+    res.render('courses', { title: 'Courses' });
+});
+
+
 
 module.exports = router;
